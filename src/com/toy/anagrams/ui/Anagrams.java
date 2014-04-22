@@ -35,6 +35,7 @@ import com.toy.anagrams.lib.WordLibrary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -79,11 +80,18 @@ public class Anagrams extends JFrame {
     private WordLibrary wordLibrary;
 
     /** Creates new form Anagrams */
+    public void RandomAnagrams(int i){
+     Random rand = new Random();
+     int rnd =  rand.nextInt(wordLibrary.getSize());
+     wordIdx = rnd;
+    }
+    
     public Anagrams() {
         wordLibrary = WordLibrary.getDefault();
         
         initComponents();
         getRootPane().setDefaultButton(guessButton);
+        RandomAnagrams(wordIdx);
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
         pack();
         guessedWord.requestFocusInWindow();
@@ -254,8 +262,8 @@ public class Anagrams extends JFrame {
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
-        wordIdx = (wordIdx + 1) % wordLibrary.getSize();
-
+        //wordIdx = (wordIdx + 1) % wordLibrary.getSize();
+        RandomAnagrams(wordIdx);
         feedbackLabel.setText(" ");
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx));
         guessedWord.setText("");
