@@ -149,6 +149,11 @@ public class Anagrams extends JFrame {
 
         scrambledWord.setEditable(false);
         scrambledWord.setColumns(20);
+        scrambledWord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scrambledWordActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -221,6 +226,11 @@ public class Anagrams extends JFrame {
         mainPanel.add(levelLabel, gridBagConstraints);
 
         selectLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Level 1", "Level 2", "Level 3" }));
+        selectLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectLevelActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -291,6 +301,19 @@ public class Anagrams extends JFrame {
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         System.exit(0);
     }//GEN-LAST:event_exitForm
+
+    private void selectLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectLevelActionPerformed
+        int level = selectLevel.getSelectedIndex();
+        int i = 0;
+        if(level == 0) {RandomAnagrams(i);}
+        else if(level == 1) {
+            for(int c=0; c<2; c++){RandomAnagrams(i);}}
+        else {for(int c=0; c<3; c++){RandomAnagrams(i);}}
+    }//GEN-LAST:event_selectLevelActionPerformed
+
+    private void scrambledWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scrambledWordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_scrambledWordActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
